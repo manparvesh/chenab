@@ -2,7 +2,7 @@
 import imp
 import sys
 
-from chenab.virtual_machine import VirtualMachine
+from modules.virtual_machine import VirtualMachine
 
 
 def run_python_file(filename):
@@ -14,7 +14,7 @@ def run_python_file(filename):
     sys.modules['__main__'] = main_mod
     main_mod.__builtins__ = sys.modules['builtins']
 
-    with open(filename, 'rU') as f:
+    with open(filename, 'r') as f:
         source = f.read()
 
     if not source or source[-1] != '\n':

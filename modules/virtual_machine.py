@@ -4,9 +4,9 @@ import dis
 import operator
 import sys
 
-from chenab.frame import Frame
-from chenab.function import Function
-from chenab.virtual_machine_error import VirtualMachineError
+from modules.frame import Frame
+from modules.function import Function
+from modules.virtual_machine_error import VirtualMachineError
 
 Block = collections.namedtuple("Block", "type, handler, stack_height")
 

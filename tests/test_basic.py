@@ -1,6 +1,22 @@
 # coding=utf-8
+from unittest import TestCase
 
-import chenab.__main__
+from click.testing import CliRunner
 
-if __name__ == '__main__':
-    chenab.__main__.run_python_file('sample_python_codes/hello_world.py')
+from chenab import cli
+
+
+class TestSample(TestCase):
+    """
+        Sample Test
+    """
+
+    def __init__(self, methodName='runTest'):
+        super(TestSample, self).__init__()
+        self.runner = CliRunner()
+
+    def runTest(self):
+        result = self.runner.invoke(cli, ['tests/sample_python_codes/hello_world.py'])
+        output_string = str(result.output.encode('ascii', 'ignore').decode("utf-8"))
+        self.assertEqual(0, result.exit_code)
+        self.assertEqual("Hello world!\n", output_string)
